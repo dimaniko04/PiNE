@@ -1,4 +1,18 @@
 @base = http://localhost:3000
 
-GET  {{base}}
+POST {{base}}/get-longest-word
 Accept: application/json
+Content-Type: application/json
+
+{
+    "text": "Some text with alongword"
+}
+
+###
+POST {{base}}/get-longest-word
+Accept: application/json
+Content-Type: application/json
+
+{
+    "text": ""
+}
