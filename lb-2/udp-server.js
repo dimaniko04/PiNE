@@ -12,12 +12,10 @@ const server = dgram.createSocket("udp4", (msg, rinfo) => {
   const fullName = `${clientName} ${SURNAME}`;
 
   if (!clientName) {
-    console.log("Client name not provided. Sending default name");
     server.send(`Default: ${DEFAULT_NAME}`, rinfo.port, rinfo.address);
     return;
   }
   if (!isValidName(clientName)) {
-    console.error(`Invalid input from UDP client: ${clientName}`);
     server.send(
       "Error: Invalid name. Only letters are allowed.",
       rinfo.port,
@@ -26,7 +24,6 @@ const server = dgram.createSocket("udp4", (msg, rinfo) => {
     return;
   }
 
-  console.log(`Received: ${clientName}. Sending: ${fullName}`);
   server.send(`Full name: ${fullName}`, rinfo.port, rinfo.address);
 });
 

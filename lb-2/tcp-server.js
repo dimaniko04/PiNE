@@ -14,19 +14,15 @@ const server = net.createServer((socket) => {
     const clientName = data.toString().trim();
 
     if (!clientName || clientName == "\x00") {
-      console.log("Client name not provided. Sending default name");
       socket.write(`Default: ${DEFAULT_NAME}`);
       return;
     }
     if (!isValidName(clientName)) {
-      console.error(`Invalid input from TCP client: ${clientName}`);
       socket.write("Error: Invalid name. Only letters are allowed.");
       return;
     }
 
     const fullName = `${clientName} ${SURNAME}`;
-    console.log(`Received: ${clientName}. Sending: ${fullName}`);
-
     socket.write(`Full name: ${fullName}`);
   });
 
