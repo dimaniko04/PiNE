@@ -1,5 +1,5 @@
 export class Service {
-  static base = "http://localhost:3000";
+  static base = "http://localhost:5000";
 
   static async getLongestWord(text: string): Promise<string> {
     await new Promise((resolve) => setTimeout(resolve, 1000));
